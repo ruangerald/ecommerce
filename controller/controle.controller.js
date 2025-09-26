@@ -19,4 +19,14 @@ const cadastrar = async (req, res) => {
         }
 }
 
-module.exports = {cadastrar}
+const listar = async(req,res)=>{
+    try {
+        const dados = await Controle.findAll()
+        res.status(200).json({message: 'Dados Listados!!'})
+    } catch (err) {
+        res.status(500).json({message: 'Erro ao listar dados!!'})
+        console.error('Erro ao listar dados',err)
+    }
+}
+
+module.exports = {cadastrar, listar}
